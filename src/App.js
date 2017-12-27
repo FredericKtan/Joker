@@ -58,10 +58,10 @@ class App extends Component {
           }
         </div>
         {
-          this.props.hands.map(hand => (
+          this.props.hands.map((hand, key) => (
             <div style={{ ...styles.column }}>
               <p style={{ ...styles.center }}>
-                Hand
+                Player { key }'s Hand
               </p>
               <p style={{ ...styles.center }}>
                 { hand.length } cards left
