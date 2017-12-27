@@ -1,4 +1,5 @@
 /* global document */
+/* global window */
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -12,6 +13,8 @@ import configureStore, { history } from './store';
 import App from './App';
 
 const store = configureStore();
+
+window.store = store.getState();
 
 ReactDOM.render(
   <Provider store={store}>

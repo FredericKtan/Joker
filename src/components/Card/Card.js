@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Card = ({ number, color }) => {
+const Card = ({ number, color }) => {
   const styles = {
     view: {
       display: 'flex',
