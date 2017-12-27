@@ -1,110 +1,63 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { Link, Route, Switch, withRouter } from 'react-router-dom';
 
-import Card from './components/Card';
+import GamePage from './routes/GamePage';
+import HomePage from './routes/HomePage';
+import RulesPage from './routes/RulesPage';
 
-import { distributeCards, revealCard } from './actions/plays';
+const App = () => {
+  const styles = {
+    view: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    header: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    title: {
+      textAlign: 'center',
+    },
+    menu: {
+      listStyle: 'none',
+      margin: '0',
+      padding: '0',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    menuItem: {
+      textDecoration: 'none',
+      marginLeft: '10px',
+      marginRight: '10px',
+    }
+  };
 
-const renderCards = cards => (
-  cards.map(card => (
-    <Card key={card.number + card.color} number={card.number} color={card.color} />
-  ))
-);
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-    this.handleRevealClick = this.handleRevealClick.bind(this);
-  }
-
-  componentWillMount() {
-    this.props.dispatch(distributeCards(this.props.cards));
-  }
-
-  handleClick() {
-    this.props.dispatch(distributeCards(this.props.cards, this.props.hands.length));
-  }
-
-  handleRevealClick() {
-    this.props.dispatch(revealCard(this.props.cards, this.props.table.length));
-  }
-
-  render() {
-    const styles = {
-      view: {
-        display: 'flex',
-      },
-      column: {
-        display: 'flex',
-        flexDirection: 'column',
-      },
-      center: {
-        textAlign: 'center',
-      },
-    };
-
-    return (
-      <div style={{ ...styles.view }}>
-        <div style={{ ...styles.column }}>
-          <button onClick={this.handleClick}>Distribute</button>
-          <button onClick={this.handleRevealClick}>Reveal</button>
-        </div>
-        <div style={{ ...styles.column }}>
-          <p style={{ ...styles.center }}>
-            Table
-          </p>
-          <p style={{ ...styles.center }}>
-            { this.props.table.length } cards
-          </p>
-          {
-            renderCards(this.props.table)
-          }
-        </div>
-        <div style={{ ...styles.column }}>
-          <p style={{ ...styles.center }}>
-            Deck
-          </p>
-          <p style={{ ...styles.center }}>
-            { this.props.cards.length } cards left
-          </p>
-          {
-            renderCards(this.props.cards)
-          }
-        </div>
-        {
-          this.props.hands.map((hand, key) => (
-            <div style={{ ...styles.column }}>
-              <p style={{ ...styles.center }}>
-                Player { key }'s Hand
-              </p>
-              <p style={{ ...styles.center }}>
-                { hand.length } cards
-              </p>
-              {
-                renderCards(hand)
-              }
-            </div>
-          ))
-        }
+  return (
+    <div style={{ ...styles.view }}>
+      <div style={{ ...styles.header }}>
+        <h1 style={{ ...styles.title }}>Joker</h1>
+        <ul style={{ ...styles.menu }}>
+          <Link style={{ ...styles.menuItem }} to="/">
+            <li>Home</li>
+          </Link>
+          <Link style={{ ...styles.menuItem }} to="/rules">
+            <li>Rules</li>
+          </Link>
+          <Link style={{ ...styles.menuItem }} to="/game">
+            <li>Game</li>
+          </Link>
+        </ul>
       </div>
-    );
-  }
+      <div>
+        <Switch>
+          <Route exact path="/" component={HomePage} />            
+          <Route exact path="/game" component={GamePage} />
+          <Route exact path="/rules" component={RulesPage} />
+        </Switch>
+      </div>
+    </div>
+  );
 }
 
-App.propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.object).isRequired,
-  dispatch: PropTypes.func.isRequired,
-  hands: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)).isRequired,
-  table: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-const mapStateToProps = state => ({
-  cards: state.cards,
-  hands: state.hands,
-  table: state.table,
-});
-
-export default connect(mapStateToProps)(App);
+export default withRouter(App);
