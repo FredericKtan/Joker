@@ -1,6 +1,11 @@
 import { append, without } from 'ramda';
 
 export const distributeCards = (cards) => {
+  if (cards.length < 42) {
+    return ({
+      type: 'NOT_ENOUGH_CARDS',
+    });
+  }
   const rCardOne = cards[Math.floor(Math.random() * cards.length)];
   const cardsWithoutRCards = without([rCardOne], cards);
   const rCardTwo = cardsWithoutRCards[Math.floor(Math.random() * cardsWithoutRCards.length)];

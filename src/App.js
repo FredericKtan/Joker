@@ -13,7 +13,17 @@ const renderCards = cards => (
 );
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   componentWillMount() {
+    this.props.dispatch(distributeCards(this.props.cards));
+  }
+
+  handleClick() {
     this.props.dispatch(distributeCards(this.props.cards));
   }
 
@@ -22,20 +32,46 @@ class App extends Component {
       view: {
         display: 'flex',
       },
+      column: {
+        display: 'flex',
+        flexDirection: 'column',
+      },
+      center: {
+        textAlign: 'center',
+      },
     };
 
     return (
       <div style={{ ...styles.view }}>
-        <div>
+        <div style={{ ...styles.column }}>
+          <button onClick={this.handleClick}>Distribute</button>
+        </div>
+        <div style={{ ...styles.column }}>
+          <p style={{ ...styles.center }}>
+            Deck
+          </p>
+          <p style={{ ...styles.center }}>
+            { this.props.cards.length } cards left
+          </p>
           {
             renderCards(this.props.cards)
           }
         </div>
-        <div>
-          {
-            renderCards(this.props.hand)
-          }
-        </div>
+        {
+          this.props.hands.map(hand => (
+            <div style={{ ...styles.column }}>
+              <p style={{ ...styles.center }}>
+                Hand
+              </p>
+              <p style={{ ...styles.center }}>
+                { hand.length } cards left
+              </p>
+              {
+                renderCards(hand)
+              }
+            </div>
+          ))
+        }
       </div>
     );
   }
@@ -44,12 +80,12 @@ class App extends Component {
 App.propTypes = {
   cards: PropTypes.arrayOf(PropTypes.object).isRequired,
   dispatch: PropTypes.func.isRequired,
-  hand: PropTypes.arrayOf(PropTypes.object).isRequired,
+  hands: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)).isRequired,
 };
 
 const mapStateToProps = state => ({
   cards: state.cards,
-  hand: state.hand,
+  hands: state.hands,
 });
 
 export default connect(mapStateToProps)(App);
