@@ -59,6 +59,8 @@ const cardsReducer = (state = defaultCards, action) => {
       return state;
     case 'DISTRIBUTE_CARDS':
       return action.payload.remainingCards;
+    case 'REVEAL_CARD':
+      return action.payload.remainingCards;
     default:
       return state;
   }

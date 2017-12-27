@@ -1,9 +1,9 @@
 import { append, without } from 'ramda';
 
-export const distributeCards = (cards) => {
-  if (cards.length < 42) {
+export const distributeCards = (cards, numberOfPlayers) => {
+  if (numberOfPlayers > 5) {
     return ({
-      type: 'NOT_ENOUGH_CARDS',
+      type: 'TOO_MANY_PLAYERS',
     });
   }
   const rCardOne = cards[Math.floor(Math.random() * cards.length)];
@@ -23,4 +23,21 @@ export const distributeCards = (cards) => {
   });
 };
 
-export default distributeCards;
+export const revealCard = (cards, cardsOnTable) => {
+  if (cardsOnTable > 4) {
+    return ({
+      type: 'TOO_MANY_CARDS',
+    });
+  }
+
+  const card = cards[Math.floor(Math.random() * cards.length)];
+  const remainingCards = without([card], cards);
+  
+  return ({
+    type: 'REVEAL_CARD',
+    payload: {
+      remainingCards,
+      card,
+    },
+  });
+}
