@@ -81,7 +81,7 @@ class App extends Component {
                 Player { key }'s Hand
               </p>
               <p style={{ ...styles.center }}>
-                { hand.length } cards left
+                { hand.length } cards
               </p>
               {
                 renderCards(hand)

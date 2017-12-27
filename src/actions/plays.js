@@ -32,7 +32,7 @@ export const revealCard = (cards, cardsOnTable) => {
 
   const card = cards[Math.floor(Math.random() * cards.length)];
   const remainingCards = without([card], cards);
-  
+
   return ({
     type: 'REVEAL_CARD',
     payload: {
@@ -40,4 +40,4 @@ export const revealCard = (cards, cardsOnTable) => {
       card,
     },
   });
-}
+};
