@@ -3,7 +3,7 @@ import { Link, Route, Switch, withRouter } from 'react-router-dom';
 
 import GamePage from './routes/GamePage';
 import HomePage from './routes/HomePage';
-import RulesPage from './routes/RulesPage';
+import CombinationsPage from './routes/CombinationsPage';
 
 const App = () => {
   const styles = {
@@ -14,6 +14,8 @@ const App = () => {
     header: {
       display: 'flex',
       flexDirection: 'column',
+      paddingBottom: '20px',
+      borderBottom: '1px solid black',
     },
     title: {
       textAlign: 'center',
@@ -30,7 +32,7 @@ const App = () => {
       textDecoration: 'none',
       marginLeft: '10px',
       marginRight: '10px',
-    }
+    },
   };
 
   return (
@@ -41,8 +43,8 @@ const App = () => {
           <Link style={{ ...styles.menuItem }} to="/joker">
             <li>Home</li>
           </Link>
-          <Link style={{ ...styles.menuItem }} to="/joker/rules">
-            <li>Rules</li>
+          <Link style={{ ...styles.menuItem }} to="/joker/combinations">
+            <li>Combinations</li>
           </Link>
           <Link style={{ ...styles.menuItem }} to="/joker/game">
             <li>Game</li>
@@ -51,13 +53,13 @@ const App = () => {
       </div>
       <div>
         <Switch>
-          <Route exact path="/joker" component={HomePage} />            
+          <Route exact path="/joker" component={HomePage} />
           <Route exact path="/joker/game" component={GamePage} />
-          <Route exact path="/joker/rules" component={RulesPage} />
+          <Route exact path="/joker/combinations" component={CombinationsPage} />
         </Switch>
       </div>
     </div>
   );
-}
+};
 
 export default withRouter(App);

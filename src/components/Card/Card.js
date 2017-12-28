@@ -21,7 +21,7 @@ const renderColor = (color) => {
   }
 };
 
-const Card = ({ number, color }) => {
+const Card = ({ color, fromHand, isCombination, number }) => {
   const styles = {
     view: {
       display: 'flex',
@@ -35,11 +35,15 @@ const Card = ({ number, color }) => {
       margin: '10px',
       padding: '10px',
       borderRadius: '10%',
+      backgroundColor: fromHand ? '#42A5F5' : 'transparent',
     },
     numberTopLeft: {
       position: 'absolute',
       top: '10px',
       left: '10px',
+    },
+    isCombination: {
+      backgroundColor: isCombination ? '#CDDC39' : 'transparent',
     },
     numberBottomRight: {
       position: 'absolute',
@@ -52,7 +56,7 @@ const Card = ({ number, color }) => {
   };
 
   return (
-    <div style={{ ...styles.view }}>
+    <div style={{ ...styles.view, ...styles.isCombination }}>
       <span style={{ ...styles.numberTopLeft }}>{ number }</span>
       { renderColor(color) }
       <span style={{ ...styles.numberBottomRight }}>{ number }</span>
@@ -63,6 +67,13 @@ const Card = ({ number, color }) => {
 Card.propTypes = {
   number: PropTypes.number.isRequired,
   color: PropTypes.oneOf(['heart', 'spade', 'diamond', 'club']).isRequired,
+  fromHand: PropTypes.bool,
+  isCombination: PropTypes.bool,
 };
+
+Card.defaultProps = {
+  fromHand: false,
+  isCombination: false,
+}
 
 export default Card;

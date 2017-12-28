@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Card from '../components/Card';
+import Hand from '../components/Hand';
 
 import { distributeCards, revealCard } from '../actions/plays';
 
@@ -77,17 +78,7 @@ class GamePage extends Component {
         </div>
         {
           this.props.hands.map((hand, key) => (
-            <div style={{ ...styles.column }}>
-              <p style={{ ...styles.center }}>
-                Player { key }{ '\'' }s Hand
-              </p>
-              <p style={{ ...styles.center }}>
-                { hand.length } cards
-              </p>
-              {
-                renderCards(hand)
-              }
-            </div>
+            <Hand hand={hand} table={this.props.table} playerNumber={key} />
           ))
         }
       </div>
