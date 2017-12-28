@@ -38,22 +38,22 @@ const App = () => {
       <div style={{ ...styles.header }}>
         <h1 style={{ ...styles.title }}>Joker</h1>
         <ul style={{ ...styles.menu }}>
-          <Link style={{ ...styles.menuItem }} to="/">
+          <Link style={{ ...styles.menuItem }} to="/joker">
             <li>Home</li>
           </Link>
-          <Link style={{ ...styles.menuItem }} to="/rules">
+          <Link style={{ ...styles.menuItem }} to="/joker/rules">
             <li>Rules</li>
           </Link>
-          <Link style={{ ...styles.menuItem }} to="/game">
+          <Link style={{ ...styles.menuItem }} to="/joker/game">
             <li>Game</li>
           </Link>
         </ul>
       </div>
       <div>
         <Switch>
-          <Route exact path="/" component={HomePage} />            
-          <Route exact path="/game" component={GamePage} />
-          <Route exact path="/rules" component={RulesPage} />
+          <Route exact path="/joker" component={HomePage} />            
+          <Route exact path="/joker/game" component={GamePage} />
+          <Route exact path="/joker/rules" component={RulesPage} />
         </Switch>
       </div>
     </div>
