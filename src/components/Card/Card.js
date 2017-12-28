@@ -1,6 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Spade from '../Icons/Spade';
+import Diamond from '../Icons/Diamond';
+import Club from '../Icons/Club';
+import Heart from '../Icons/Heart';
+
+const renderColor = (color) => {
+  switch (color) {
+    case 'heart':
+      return <Heart />;
+    case 'spade':
+      return <Spade />;
+    case 'diamond':
+      return <Diamond />;
+    case 'club':
+      return <Club />;
+    default:
+      return null;
+  }
+}
+
 const Card = ({ number, color }) => {
   const styles = {
     view: {
@@ -27,14 +47,14 @@ const Card = ({ number, color }) => {
       right: '10px',
     },
     color: {
-
+      fill: 'red',
     },
   };
 
   return (
     <div style={{ ...styles.view }}>
       <span style={{ ...styles.numberTopLeft }}>{ number }</span>
-      <span style={{ ...styles.color }}>{ color }</span>
+      { renderColor(color) }
       <span style={{ ...styles.numberBottomRight }}>{ number }</span>
     </div>
   );
@@ -42,7 +62,7 @@ const Card = ({ number, color }) => {
 
 Card.propTypes = {
   number: PropTypes.number.isRequired,
-  color: PropTypes.oneOf(['hearts', 'spades', 'diamonds', 'clubs']).isRequired,
+  color: PropTypes.oneOf(['heart', 'spade', 'diamond', 'club']).isRequired,
 };
 
 export default Card;
