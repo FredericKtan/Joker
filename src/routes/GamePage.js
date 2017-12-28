@@ -79,7 +79,7 @@ class GamePage extends Component {
           this.props.hands.map((hand, key) => (
             <div style={{ ...styles.column }}>
               <p style={{ ...styles.center }}>
-                Player { key }'s Hand
+                Player { key }{ '\'' }s Hand
               </p>
               <p style={{ ...styles.center }}>
                 { hand.length } cards

@@ -19,7 +19,7 @@ const renderColor = (color) => {
     default:
       return null;
   }
-}
+};
 
 const Card = ({ number, color }) => {
   const styles = {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link, Route, Switch, withRouter } from 'react-router-dom';
 
 import GamePage from './routes/GamePage';
