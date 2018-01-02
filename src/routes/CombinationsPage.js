@@ -28,12 +28,12 @@ const CombinationsPage = () => (
       <div>
         <h2 style={{ ...styles.textCentered }}>One pair</h2>
         <UIHorizontalLayout>
-          <UIHorizontalLayout centered ratio={2}>
+          <UIHorizontalLayout centered ratio="2">
             <p style={{ ...styles.textCentered }}>
               A list of cards with two cards with the same number
             </p>
           </UIHorizontalLayout>
-          <UIHorizontalLayout centered ratio={2}>
+          <UIHorizontalLayout centered ratio="2">
             <Card number={4} color="heart" isCombination />
             <Card number={4} color="spade" isCombination />
             <Card number={1} color="diamond" />
@@ -45,13 +45,13 @@ const CombinationsPage = () => (
       <div>
         <h2 style={{ ...styles.textCentered }}>Two pairs</h2>
         <UIHorizontalLayout>
-          <UIHorizontalLayout centered ratio={2}>
+          <UIHorizontalLayout centered ratio="2">
             <p style={{ ...styles.textCentered }}>
               A list of cards with two cards with the same number
               and another cards with the same number but different from the first pair
             </p>
           </UIHorizontalLayout>
-          <UIHorizontalLayout centered ratio={2}>
+          <UIHorizontalLayout centered ratio="2">
             <Card number={4} color="heart" isCombination />
             <Card number={4} color="spade" isCombination />
             <Card number={7} color="diamond" isCombination />
@@ -63,12 +63,12 @@ const CombinationsPage = () => (
       <div>
         <h2 style={{ ...styles.textCentered }}>Three of a kind</h2>
         <UIHorizontalLayout>
-          <UIHorizontalLayout centered ratio={2}>
+          <UIHorizontalLayout centered ratio="2">
             <p style={{ ...styles.textCentered }}>
               A list of cards with three cards with the same number
             </p>
           </UIHorizontalLayout>
-          <UIHorizontalLayout centered ratio={2}>
+          <UIHorizontalLayout centered ratio="2">
             <Card number={4} color="heart" isCombination />
             <Card number={4} color="spade" isCombination />
             <Card number={7} color="heart" />
@@ -80,12 +80,12 @@ const CombinationsPage = () => (
       <div>
         <h2 style={{ ...styles.textCentered }}>More to come...</h2>
         <UIHorizontalLayout>
-          <UIHorizontalLayout centered ratio={2}>
+          <UIHorizontalLayout centered ratio="2">
             <p style={{ ...styles.textCentered }}>
               Mysterious combination
             </p>
           </UIHorizontalLayout>
-          <UIHorizontalLayout centered ratio={2}>
+          <UIHorizontalLayout centered ratio="2">
             <Card number={0} color="heart" />
             <Card number={0} color="spade" />
             <Card number={0} color="diamond" />
