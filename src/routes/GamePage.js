@@ -6,6 +6,8 @@ import Card from '../components/Card';
 import Hand from '../components/Hand';
 
 import { distributeCards, revealCard } from '../actions/plays';
+import { createPlayer } from '../actions/player';
+import { drawCard, discardCard } from '../actions/card';
 
 const renderCards = cards => (
   cards.map(card => (
@@ -19,6 +21,7 @@ class GamePage extends Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleRevealClick = this.handleRevealClick.bind(this);
+    this.handleCreatePlayerClick = this.handleCreatePlayerClick.bind(this);
   }
 
   componentWillMount() {
@@ -32,6 +35,19 @@ class GamePage extends Component {
   handleRevealClick() {
     this.props.dispatch(revealCard(this.props.cards, this.props.table.length));
   }
+
+  handleCreatePlayerClick() {
+    this.props.dispatch(createPlayer('Frederic'));
+  }
+
+  handleDiscardCardClick = () => {
+    this.props.dispatch(discardCard());
+  }
+
+  handleDrawCardClick = (card) => {
+    this.props.dispatch(drawCard(this.props.cards, card));
+  }
+
 
   render() {
     const styles = {
@@ -53,6 +69,9 @@ class GamePage extends Component {
         <div style={{ ...styles.column }}>
           <button onClick={this.handleClick}>Distribute</button>
           <button onClick={this.handleRevealClick}>Reveal</button>
+          <button onClick={this.handleCreatePlayerClick}>Add player</button>
+          <button onClick={this.handleDrawCardClick}>Draw a card</button>
+          <button onClick={this.handleDiscardCardClick}>Discard a card</button>
         </div>
         <div style={{ ...styles.column }}>
           <p style={{ ...styles.center }}>

@@ -1,3 +1,5 @@
+/* global window */
+
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import { routerMiddleware } from 'react-router-redux';
@@ -18,6 +20,7 @@ const configureStore = () => {
   return createStore(
     rootReducer,
     applyMiddleware(...middlewares),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   );
 };
 
