@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 
 import Card from '../components/Card';
 import Hand from '../components/Hand';
+import {
+  UIVerticalLayout,
+} from '../components';
 
 import { distributeCards, revealCard } from '../actions/plays';
 import { createPlayer } from '../actions/player';
@@ -73,6 +76,12 @@ class GamePage extends Component {
           <button onClick={this.handleDrawCardClick}>Draw a card</button>
           <button onClick={this.handleDiscardCardClick}>Discard a card</button>
         </div>
+        <UIVerticalLayout>
+          <form>
+            <input type="text" placeholder="Add the new player's name" />
+            <input type="submit" value="Add a new player" />
+          </form>
+        </UIVerticalLayout>
         <div style={{ ...styles.column }}>
           <p style={{ ...styles.center }}>
             Table

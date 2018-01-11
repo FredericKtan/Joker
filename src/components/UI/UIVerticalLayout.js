@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const UIVerticalLayout = ({ reversed, children, ratio }) => {
+export const UIVerticalLayout = ({ reversed, children, ratio }) => {
   const styles = {
     view: {
       display: 'flex',

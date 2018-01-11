@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const UIHorizontalLayout = ({
+export const UIHorizontalLayout = ({
   centered,
   children,
   ratio,
